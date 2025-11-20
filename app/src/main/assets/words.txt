@@ -1,5 +1,10 @@
-apples
-red
-grapes
-yellow
-pizzare
+apple
+banana
+car
+house
+phone
+dog
+cat
+book
+chair
+tree
