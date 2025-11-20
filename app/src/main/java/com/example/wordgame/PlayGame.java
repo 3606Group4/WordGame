@@ -224,11 +224,17 @@ public class PlayGame extends AppCompatActivity {
     }
 
     public void EndGame(View view) {
-        Toast.makeText(this,"You have completed the Game Congrats Your total Score is :"+ points,Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
+
+        String username = getIntent().getStringExtra("username");
+
+        intent.putExtra("score", points);
+        intent.putExtra("username", username);
+
         startActivity(intent);
-        // String s = getIntent().getStringExtra("username");
+        finish();
     }
+
 
 
     public void CompareWord(View view ) {

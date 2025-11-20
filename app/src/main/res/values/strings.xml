@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">WordGame</string>
+
+    <string name="result_text">Player: %1$s\nScore: %2$d</string>
+    <string name="result_placeholder">Results</string>
+    <string name="share_button">Share Score via SMS</string>
+    <string name="phone_number_hint">Enter phone number</string>
+    <string name="sms_message_basic">Player: %1$s\nScore: %2$d</string>
+
 </resources>
