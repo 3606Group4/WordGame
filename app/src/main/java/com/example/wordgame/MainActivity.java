@@ -34,6 +34,12 @@ public class MainActivity extends AppCompatActivity {
         game=findViewById(R.id.startGame);
         highScores=findViewById(R.id.highScore);
         rule=findViewById(R.id.rules);
+
+        highScores.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, HighScoreActivity.class);
+            startActivity(intent);
+        });
+
         /*rule.setText("You have 50 seconds to guess the Word" +
                     "\nAfter every 10 seconds a picture hint will be revealed" +
                     "\nThe player has 3 Attempts " +
@@ -46,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
                     "\n Less than 20 sec Remaining 15 points"+
                     "\nLess than 10 sec Remaining 1 points"
         );*/
+
     }
     public void StartGame(View view) {
         String userName =username.getText().toString();

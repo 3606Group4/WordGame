@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WordGame">
         <activity
+            android:name=".HighScore"
+            android:exported="false" />
+        <activity
             android:name=".PlayGame"
             android:exported="false" />
         <activity
@@ -23,8 +26,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".ResultActivity" />
+        <activity android:name=".HighScoreActivity" />
 
     </application>
 

@@ -32,4 +32,20 @@
         android:text="@string/share_button"
         android:layout_marginTop="30dp" />
 
+    <Button
+        android:id="@+id/btnViewScores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Highscores"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        android:id="@+id/btnPlayAgain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Play Again"
+        android:onClick="playAgain"
+        android:layout_marginTop="16dp"
+        android:padding="10dp"/>
+
 </LinearLayout>
