@@ -31,13 +31,13 @@ public class ResultActivity extends AppCompatActivity {
         int score = getIntent().getIntExtra("score", 0);
         String username = getIntent().getStringExtra("username");
 
+        // PERSONAL highscore (user ONLY)
+        int highScore = getHighScore(username);
+
         TextView resultText = findViewById(R.id.txtResult);
         EditText phoneInput = findViewById(R.id.phoneNumber);
         Button shareBtn = findViewById(R.id.btnShare);
         Button viewHighscores = findViewById(R.id.btnViewScores);
-
-        // Get existing highscore from file
-        int highScore = getHighScore();
 
         // Show results including highscore
         String displayText = "Player: " + username +
@@ -71,8 +71,10 @@ public class ResultActivity extends AppCompatActivity {
         // VIEW HIGHSCORES BUTTON
         viewHighscores.setOnClickListener(v -> {
             Intent intent = new Intent(ResultActivity.this, HighScoreActivity.class);
+            intent.putExtra("username", username); // SEND CURRENT USER
             startActivity(intent);
         });
+
     }
 
     // Save score to file
@@ -88,28 +90,29 @@ public class ResultActivity extends AppCompatActivity {
     }
 
     // READ highscore from file
-    private int getHighScore() {
-        int highest = 0;
+    private int getHighScore(String currentUser) {
+        int best = 0;
 
         try (FileInputStream fis = openFileInput(FILE_NAME);
              BufferedReader reader = new BufferedReader(new InputStreamReader(fis))) {
 
             String line;
+
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length >= 2) {
-                    int score = Integer.parseInt(parts[1]);
-                    if (score > highest) {
-                        highest = score;
-                    }
+                if (parts.length < 2) continue;
+
+                String username = parts[0].trim();
+                int score = Integer.parseInt(parts[1].trim());
+
+                if (username.equalsIgnoreCase(currentUser)) {
+                    if (score > best) best = score;
                 }
             }
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        } catch (Exception ignored) {}
 
-        return highest;
+        return best;
     }
 
     public void playAgain(View view) {
